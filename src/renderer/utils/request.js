@@ -30,11 +30,13 @@ const req = async function (options, retry = 0) {
     })
     return body
   } catch (e) {
-    if ((e.message === 'ETIMEDOUT' || e.message === 'ESOCKETTIMEDOUT') && retry < 5) {
+    if ((e.code === 'ETIMEDOUT' || e.code === 'ESOCKETTIMEDOUT') && retry < 5) {
       await new Promise((resolve, reject) => {
-        resolve()
-      }, 50)
-      console.log('retry request')
+        setTimeout(() => {
+          resolve()
+        }, 50)
+      })
+      console.log('retry request', options)
       const body = await req(options, retry + 1)
       return body
     } else {
