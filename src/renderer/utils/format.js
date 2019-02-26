@@ -22,3 +22,7 @@ export const formatDate = (d) => {
   const [, year, month, day, hour, minute] = d.match(parse)
   return year ? moment(`${year} ${month} ${day} ${hour}:${minute}`, 'YYYY M D H:mm').toDate() : moment(`${month} ${day} ${hour}:${minute}`, 'M D H:mm').toDate()
 }
+
+export const parseDate = (d) => {
+  return moment(d).format('YYYY年M月D日 H时mm分')
+}

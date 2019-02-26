@@ -38,7 +38,7 @@
                     |
                     <span class="author">{{ article.author }}</span>
                     |
-                    <span class="time">{{ article.publishTimeFormat }}</span>
+                    <span class="time">{{ parseArticleDate(article.publishTime) }}</span>
                   </p>
                   <p class="desc">{{ article.excerpt }}</p>
                 </a>
@@ -70,6 +70,7 @@
 import { mapState, mapActions } from 'vuex'
 import config from '../config'
 import path from 'path'
+import { parseDate } from '../utils/format'
 export default {
   name: 'home-page',
   data () {
@@ -143,6 +144,9 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    parseArticleDate (d) {
+      return parseDate(d)
     }
   },
   created () {
