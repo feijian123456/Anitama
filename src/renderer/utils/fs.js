@@ -25,20 +25,20 @@ export const mkdir = function (filePath, options = { recursive: false, mode: 0o7
 export const rmDirFiles = async function (filePath) {
   try {
     const files = fs.readdirSync(filePath)
-    files.forEach(async file => {
-      let stat = fs.statSync(path.join(filePath, file))
+    for (let i = 0; i < files.length; i++) {
+      let stat = fs.statSync(path.join(filePath, files[i]))
       if (stat.isDirectory()) {
-        await rmDirFiles(path.join(filePath, file))
+        await rmDirFiles(path.join(filePath, files[i]))
         await new Promise((resolve, reject) => {
-          fs.rmdir(path.join(filePath, file), err => {
+          fs.rmdir(path.join(filePath, files[i]), err => {
             if (err) reject(err)
             else resolve()
           })
         })
       } else {
-        fs.unlinkSync(path.join(filePath, file))
+        fs.unlinkSync(path.join(filePath, files[i]))
       }
-    })
+    }
   } catch (e) {
     throw e
   }
