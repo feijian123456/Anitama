@@ -1,9 +1,9 @@
 <template>
     <div id='init-page'>
-      <div v-if="total !== null" class="container">
+      <div class="container">
         <p class="desc" v-if="!searched">正在检索文章中...</p>
         <p class="desc" v-else>检索完成!</p>
-        <p class="desc" v-if="!saved">正在获取保存文章, 进度: {{ progress }}%</p>
+        <p class="desc" v-if="!saved && total !== null">正在获取保存文章, 进度: {{ progress }}%</p>
         <p class="desc" v-else>保存完成!3秒后进入主页面</p>
       </div>
     </div>

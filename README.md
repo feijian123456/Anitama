@@ -6,7 +6,7 @@
 
 2019/2/26更新:
 
-Anitama公告将会继续, [正式公告: Anitama将会继续], 非常nice, repo想想还是暂且留着吧233
+Anitama公告将会继续, [正式公告: Anitama将会继续](https://zhuanlan.zhihu.com/p/57680263), 非常nice, repo想想还是暂且留着吧233
 
 2019/2/22:
 

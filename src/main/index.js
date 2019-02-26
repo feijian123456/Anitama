@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow, Menu, Tray, dialog } from 'electron'
+import { app, BrowserWindow, Menu, Tray, dialog, globalShortcut } from 'electron'
 import path from 'path'
 
 /**
@@ -54,6 +54,11 @@ function createWindow () {
 
   if (process.env.NODE_ENV !== 'development') {
     // mainWindow.webContents.openDevTools()
+    globalShortcut.register('Control+Alt+Shift+D', () => {
+      if (!mainWindow.webContents.isDevToolsOpened()) {
+        mainWindow.webContents.openDevTools({ mode: 'detach' })
+      }
+    })
   }
 
   let image = process.env.NODE_ENV === 'development' ? path.join(__dirname, '../../build/icons/icon.ico') : path.join(__static, 'icon.ico')
