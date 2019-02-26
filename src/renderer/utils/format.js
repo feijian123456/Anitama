@@ -9,6 +9,10 @@ export const formatDate = (d) => {
     return moment(`${hour}:${minute}`, 'H:mm').subtract('days', 2).toDate()
   } else if (d.indexOf('小时前') !== -1) {
     return moment().subtract('hours', parseInt(d.substr(0, d.indexOf('小时前')))).toDate()
+  } else if (d.indexOf('分钟前') !== -1) {
+    return moment().subtract('minutes', parseInt(d.substr(0, d.indexOf('分钟前')))).toDate()
+  } else if (d.indexOf('秒前') !== -1) {
+    return moment().subtract('seconds', parseInt(d.substr(0, d.indexOf('秒前')))).toDate()
   } else if (d.indexOf('今天') !== -1) {
     const [, hour, minute] = d.match(/(\d+)时(\d+)分/)
     return moment(`${hour}:${minute}`, 'H:mm').toDate()
